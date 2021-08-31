@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Quiz API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /quiz/{id}:
+    get:
+      tags:
+        - default
+      summary: Get quiz
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Submit quiz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                responses:
+                  - question: 1
+                    option: 1
+                  - question: 2
+                    option: 3
+                  - question: 3
+                    option: 5
+                  - question: 4
+                    option: 8
+                  - question: 5
+                    option: 9
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
